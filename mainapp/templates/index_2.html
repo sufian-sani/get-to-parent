@@ -1,0 +1,48 @@
+{% comment %} {% load mptt_tags %} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Product</h1>
+    {% for i in product %}
+        <p>Name: {{i.title}}, category: {{i.category|safe}}</p>
+    {% endfor %}
+    <br>
+    <hr>
+    <br>
+    {% for j in category %}
+        <p>Category Name: {{j.name}}, prent: {{j.parent}}</p>
+    {% endfor %}
+
+    <hr>
+    <hr>
+    {% comment %} <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                // Our sample url to make request 
+                url: "{% url 'ajaxindex' %}",
+  
+                // Type of Request
+                type: "GET",
+  
+                // Function to call when to
+                // request is ok 
+                success: function (data) {
+                    var x = JSON.stringify(data);
+                    console.log(x);
+                },
+                // Error handling 
+                error: function (error) {
+                    console.log(`Error ${error}`);
+                }
+            });
+        })
+    </script> {% endcomment %}
+</body>
+</html>
